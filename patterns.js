@@ -154,14 +154,68 @@
 
 // printPattern(6)
 
+// function printPattern(n) {
+//     for(let z=0;z<n;++z) {
+//         let str = "";
+//         let i;
+//         for(i=0;i<=z;++i) str += i+1;
+//         for(let j=0;j<(n-z-1)*2;++j) str += " ";
+//         for(;i>0;--i) str += i;
+//         console.log(str);
+//     }
+// }
+
+// printPattern(6)
+
+// function printPattern(n) {
+//     let num = 1;
+//     for(let z=1;z<=n;++z) {
+//         let str = "";
+//         for(let i=0;i<z;++i) {
+//             str += num + " ";
+//             ++num;
+//         }
+//         console.log(str);
+//     }
+// }
+
+// printPattern(6)
+
+
+// function printPattern(n) {
+//     for(let z=1;z<=n;++z) {
+//         let str = "";
+//         for(let i=0;i<z;++i) {
+//             str += String.fromCharCode(65+i) + " ";
+//         }
+//         console.log(str);
+//     }
+// }
+
+// printPattern(6)
+
+// function printPattern(n) {
+//     for(let z=1;z<=n;++z) {
+//         let str = "";
+//         for(let i=0;i<=n-z;++i) {
+//             str += String.fromCharCode(65+i) + " ";
+//         }
+//         console.log(str);
+//     }
+// }
+
+// printPattern(6)
+
 function printPattern(n) {
-    for(let z=0;z<n;++z) {
+    for(let z=1;z<=n;++z) {
         let str = "";
-        for(let i=0;i<z+1;++i) str += i+1;
-        for(let j=0;j<(n-z-2)*2;++j) str += " ";
-        for(let k=0;k<z+1;++k) str += k+1;
+        for(let i=0;i<z;++i) {
+            str += String.fromCharCode(65+z-1) + " ";
+        }
         console.log(str);
     }
 }
 
 printPattern(6)
+
+
