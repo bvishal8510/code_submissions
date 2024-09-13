@@ -206,16 +206,43 @@
 
 // printPattern(6)
 
+// function printPattern(n) {
+//     for(let z=1;z<=n;++z) {
+//         let str = "";
+//         for(let i=0;i<z;++i) {
+//             str += String.fromCharCode(65+z-1) + " ";
+//         }
+//         console.log(str);
+//     }
+// }
+
+// printPattern(6)
+
+
+// function printPattern(n) {
+//     for(let z=1;z<=n;++z) {
+//         let str = "|";
+//         for(let j=0;j<(n-z);++j) str += " ";
+//         for(let i=0;i<z;++i) {
+//             str += String.fromCharCode(65+i);
+//         }
+//         for(let k=0;k<(z-1);++k) str += String.fromCharCode(65+k);
+//         console.log(str);
+//     }
+// }
+
+// printPattern(5)
+
 function printPattern(n) {
     for(let z=1;z<=n;++z) {
-        let str = "";
-        for(let i=0;i<z;++i) {
-            str += String.fromCharCode(65+z-1) + " ";
+        let str = "|";
+        for(let i=z;i>0;--i) {
+            str += String.fromCharCode(65+n-i);
         }
-        console.log(str);
+        console.log(str)
     }
 }
 
-printPattern(6)
+printPattern(5)
 
 
