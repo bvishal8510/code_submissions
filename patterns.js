@@ -233,13 +233,80 @@
 
 // printPattern(5)
 
+// function printPattern(n) {
+//     for(let z=1;z<=n;++z) {
+//         let str = "|";
+//         for(let i=z;i>0;--i) {
+//             str += String.fromCharCode(65+n-i);
+//         }
+//         console.log(str)
+//     }
+// }
+
+// printPattern(5)
+
+// function printPattern(n) {
+//     let spaces = 0;
+//     for(let z=1;z<=n;++z) {
+//         let i;
+//         let str = "|";
+//         for(i=0;i<=(n-z);++i) str += "*";
+//         for(let j=0;j<spaces;++j) str += " ";
+//         for(;i>0;--i) str += "*";
+//         spaces += 2;
+//         console.log(str)
+//     }
+//     spaces = (n-1)*2;
+//     for(let z=1;z<=n;++z) {
+//         let i;
+//         let str = "|";
+//         for(i=0;i<z;++i) str += "*";
+//         for(let j=0;j<spaces;++j) str += " ";
+//         for(;i>0;--i) str += "*";
+//         spaces -= 2;
+//         console.log(str)
+//     }
+// }
+
+// printPattern(5)
+
+// function printPattern(n) {
+//     let spaces = (n-1)*2;
+//     for(let z=1;z<=n;++z) {
+//         let i;
+//         let str = "|";
+//         for(i=0;i<z;++i) str += "*";
+//         for(let j=0;j<spaces;++j) str += " ";
+//         for(;i>0;--i) str += "*";
+//         spaces -= 2;
+//         console.log(str)
+//     }
+//     spaces = 2;
+//     for(let z=1;z<n;++z) {
+//         let i;
+//         let str = "|";
+//         for(i=0;i<(n-z);++i) str += "*";
+//         for(let j=0;j<spaces;++j) str += " ";
+//         for(;i>0;--i) str += "*";
+//         spaces += 2;
+//         console.log(str)
+//     }
+// }
+
+// printPattern(5)
+
 function printPattern(n) {
     for(let z=1;z<=n;++z) {
-        let str = "|";
-        for(let i=z;i>0;--i) {
-            str += String.fromCharCode(65+n-i);
+        if (z===1 || z===n) {
+            for(let i=1;i<=n;++i) process.stdout.write("*");
         }
-        console.log(str)
+        else {
+            for(let i=1;i<=n;++i) {
+                if (i===1 || i===n) process.stdout.write("*");
+                else process.stdout.write(" ");
+            }
+        }
+        console.log();
     }
 }
 
