@@ -295,18 +295,42 @@
 
 // printPattern(5)
 
+// function printPattern(n) {
+//     for(let z=1;z<=n;++z) {
+//         if (z===1 || z===n) {
+//             for(let i=1;i<=n;++i) process.stdout.write("*");
+//         }
+//         else {
+//             for(let i=1;i<=n;++i) {
+//                 if (i===1 || i===n) process.stdout.write("*");
+//                 else process.stdout.write(" ");
+//             }
+//         }
+//         console.log();
+//     }
+// }
+
+// printPattern(5)
+
+// function printPattern(n) {
+//     for(let i=0;i<n;++i) {
+//         for(let j=0;j<n;++j) {
+//             if(i===0 || j===0 || i===(n-1) || j===(n-1)) process.stdout.write("*");
+//             else process.stdout.write(" ");
+//         }
+//         console.log()
+//     }
+// }
+
+// printPattern(5)
+
 function printPattern(n) {
-    for(let z=1;z<=n;++z) {
-        if (z===1 || z===n) {
-            for(let i=1;i<=n;++i) process.stdout.write("*");
+    for(let i=0;i<n;++i) {
+        for(let j=0;j<n;++j) {
+            if(i===0 || j===0 || i===(n-1) || j===(n-1)) process.stdout.write("*");
+            else process.stdout.write(" ");
         }
-        else {
-            for(let i=1;i<=n;++i) {
-                if (i===1 || i===n) process.stdout.write("*");
-                else process.stdout.write(" ");
-            }
-        }
-        console.log();
+        console.log()
     }
 }
 
