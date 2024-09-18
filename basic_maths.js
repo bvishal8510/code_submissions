@@ -56,13 +56,13 @@
 // function hcfOrGcd(n1, n2) {
 //     let s = new Set();
 //     let hcf = 1;
-//     for(let i=1;i<=Math.ceil(Math.sqrt(n1));++i) {
+//     for(let i=1;i<=Math.sqrt(n1);++i) {
 //         if (n1%i === 0) {
 //             s.add(i);
 //             s.add(Math.trunc(n1/i));
 //         }
 //     }
-//     for(let i=1;i<=Math.ceil(Math.sqrt(n2));++i) {
+//     for(let i=1;i<=Math.sqrt(n2);++i) {
 //         if (n2%i === 0) {
 //             let sn = Math.trunc(n2/i);
 //             if (s.has(i) && i>hcf) hcf=i;
@@ -73,3 +73,98 @@
 // }
 
 // console.log(hcfOrGcd(20, 15))
+
+// // optimised brute 
+// function hcfOrGcd(n1, n2) {
+//     let sm = (n1<n1)?n1:n2;
+//     let hcf = 1;
+//     for(let i=Math.sqrt(sm);i>0;--i) {
+//         if(sm%i===0) {
+//             let d1 = i;
+//             let d2 = sm/i;
+
+//             if ((n1%d1 === 0) && (n2%d1 === 0) && d1>hcf) hcf=d1;
+//             if ((n1%d2 === 0) && (n2%d2 === 0) && d2>hcf) hcf=d2;
+//         }
+//     }
+
+//     let lcm = hcf * (n1/hcf) * (n2/hcf);
+//     return [lcm, hcf];
+// }
+
+// console.log(hcfOrGcd(5, 10))
+
+// // optimal approach
+// function hcfOrGcd(n1,n2) {
+//     if (n1 <= 0) return n2;
+//     else if (n2<=0) return n1;
+
+//     let sm = (n1<n2)?n1:n2;
+//     let gr = (n1>n2)?n1:n2;
+
+//     return hcfOrGcd(gr-sm, sm);
+// }
+// console.log(hcfOrGcd(5, 10))
+
+// // most optimal approach
+// function hcfOrGcd(n1,n2) {
+//     let on1 = n1;
+//     let on2 = n2;
+//     let hcf = 1;
+//     while(n1>0 && n2>0) {
+//         if(n1>n2) n1=n1%n2;
+//         else n2=n2%n1;
+//     }
+
+//     if(n1===0) hcf=n2;
+//     else hcf=n1;
+
+//     let lcm = hcf * (on1/hcf) * (on2/hcf);
+
+//     return [lcm, hcf];
+// }
+// console.log(hcfOrGcd(5, 10))
+
+// // https://takeuforward.org/maths/check-if-a-number-is-armstrong-number-or-not/
+// function isArmstrongNumber(num) {
+//     let l = String(num).length;
+//     let onum = num;
+//     let result = 0;
+
+//     while(num>0) {
+//         let d = num%10;
+//         result += Math.pow(d, l);
+//         num = Math.floor(num/10);
+//     }
+
+//     if(onum === result) return true;
+//     return false;
+// }
+// console.log(isArmstrongNumber(371))
+
+// // https://takeuforward.org/data-structure/print-all-divisors-of-a-given-number/
+// function printAllDivisors(num) {
+//     let result = new Set();
+
+//     for(let i=1;i<=Math.sqrt(num);++i) {
+//         if(num%i === 0) {
+//             result.add(i);
+
+//             if(i !== (num/i)) result.add(num/i);
+//         }
+//     }
+//     return [...result];
+// }
+
+// console.log(printAllDivisors(36))
+
+// https://takeuforward.org/data-structure/check-if-a-number-is-prime-or-not/
+function primeOrNot(num) {
+
+    for(let i=2;i<=Math.sqrt(num);++i) {
+        if(num%i === 0) return false;
+    }
+    return true;
+}
+
+console.log(primeOrNot(10))
