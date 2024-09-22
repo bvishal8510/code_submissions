@@ -42,17 +42,28 @@
 // }
 // console.log(reverseArray([1]))
 
-function reverseArray(arr) {
-    let i=0;
-    let l = arr.length-1;
+// function reverseArray(arr) {
+//     let i=0;
+//     let l = arr.length-1;
 
-    while(i<l) {
-        let temp = arr[i];
-        arr[i]=arr[l];
-        arr[l]=temp;
-        ++i;
-        --l;
-    }
-    return arr;
+//     while(i<l) {
+//         let temp = arr[i];
+//         arr[i]=arr[l];
+//         arr[l]=temp;
+//         ++i;
+//         --l;
+//     }
+//     return arr;
+// }
+// console.log(reverseArray([1,2,3,4]))
+
+function checkPalindromeRecursion(str, i=0) {
+    let j = str.length - 1 - i;
+
+    if (j<=i) return true;
+    else if (str[i]!==str[j]) return false;
+
+    return checkPalindromeRecursion(str, i+1);
 }
-console.log(reverseArray([1,2,3,4]))
+
+console.log(checkPalindromeRecursion("TAKE U FORWARD"))
