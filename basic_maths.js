@@ -158,13 +158,29 @@
 
 // console.log(printAllDivisors(36))
 
-// https://takeuforward.org/data-structure/check-if-a-number-is-prime-or-not/
-function primeOrNot(num) {
+// // https://takeuforward.org/data-structure/check-if-a-number-is-prime-or-not/
+// function primeOrNot(num) {
 
-    for(let i=2;i<=Math.sqrt(num);++i) {
-        if(num%i === 0) return false;
-    }
-    return true;
-}
+//     for(let i=2;i<=Math.sqrt(num);++i) {
+//         if(num%i === 0) return false;
+//     }
+//     return true;
+// }
 
-console.log(primeOrNot(10))
+// console.log(primeOrNot(10))
+
+// https://www.naukri.com/code360/problems/reverse-bits_2181102?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf
+// function reverseBits(inum) {
+//     let num;
+//     let bit;
+//     let result = 0;
+
+//     for(let i=0;i<32;++i) {
+//         num = Math.pow(2, i);
+//         bit = (inum & num);
+//         if(bit) result += Math.pow(2, 31-i);
+//     }
+//     return result;
+// }
+
+// console.log(reverseBits(4))
