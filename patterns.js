@@ -324,16 +324,58 @@
 
 // printPattern(5)
 
+// function printPattern(n) {
+//     for(let i=0;i<n;++i) {
+//         for(let j=0;j<n;++j) {
+//             if(i===0 || j===0 || i===(n-1) || j===(n-1)) process.stdout.write("*");
+//             else process.stdout.write(" ");
+//         }
+//         console.log()
+//     }
+// }
+
+// printPattern(5)
+
+
+// function printPattern(n) {
+//     let bl = [];
+//     let br = [];
+
+//     for(let z=0;z<n;++z) {
+//         let tn = n-z;
+//         let str = "";
+//         let rstr = "";
+//         let num = n;
+//         for(let i=0;i<n;++i) {
+//             str += num;
+//             if(num>tn) --num;
+//         }
+//         for(let i=n-2;i>=0;--i) rstr += str[i];
+//         console.log(str+rstr);
+//         bl[n-z-1]=str;
+//         br[n-z-1]=rstr;
+//     }
+//     for(let z=1;z<n;++z) {
+//         console.log(bl[z]+br[z]);
+//     }
+// }
+
+// printPattern(4);
+
 function printPattern(n) {
-    for(let i=0;i<n;++i) {
-        for(let j=0;j<n;++j) {
-            if(i===0 || j===0 || i===(n-1) || j===(n-1)) process.stdout.write("*");
-            else process.stdout.write(" ");
+    for(let i=0;i<(2*n-1);++i) {
+        for(let j=0;j<(2*n-1);++j) {
+            let td = i;
+            let ld = j;
+            let bd = (2*n - 2) - i;
+            let rd = (2*n - 2) - j;
+
+            let num = (n - (Math.min(td, bd, ld, rd)));
+
+            process.stdout.write(String(num));
         }
-        console.log()
+        console.log();
     }
 }
 
-printPattern(5)
-
-
+printPattern(4);
