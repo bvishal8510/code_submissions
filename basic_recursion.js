@@ -57,13 +57,73 @@
 // }
 // console.log(reverseArray([1,2,3,4]))
 
-function checkPalindromeRecursion(str, i=0) {
-    let j = str.length - 1 - i;
+// function checkPalindromeRecursion(str, i=0) {
+//     let j = str.length - 1 - i;
+//     if (j<=i) return true;
+//     else if (str[i]!==str[j]) return false;
+//     return checkPalindromeRecursion(str, i+1);
+// }
 
-    if (j<=i) return true;
-    else if (str[i]!==str[j]) return false;
+// console.log(checkPalindromeRecursion("  "))
 
-    return checkPalindromeRecursion(str, i+1);
+// function validPalindrome(istr) {
+//     let cstr = "";
+//     let i=0;
+//     for(i=0;i<istr.length;++i) {
+//         let ascii = istr.charCodeAt(i);
+
+//         if((ascii>64 && ascii < 91) || (ascii>96 && ascii < 123) || (ascii>47 && ascii < 58)) {
+//             if (ascii>64 && ascii < 91) {
+//                 cstr += String.fromCharCode(ascii + 32);
+//             }
+//             else cstr += istr[i];
+//         }
+//     }
+
+//     i=0;
+//     let j=cstr.length-1;
+
+//     while(i<j) {
+//         if (cstr[i]!==cstr[j]) return false;
+//         ++i;
+//         --j;
+//     }
+
+//     return true;
+
+// }
+
+// console.log(validPalindrome("race a car"))
+
+// function fibonacci(a,b,n,c) {
+//     if (c>n) return;
+//     let nn = a+b;
+//     process.stdout.write(String(nn) + " ");
+//     fibonacci(b,nn,n,c+1)
+// }
+
+// function printFibonacci(n) {
+//     if (n===0) process.stdout.write("0 ");
+//     else { process.stdout.write("0 1 ");
+//     fibonacci(0,1,n,2);
+//     }
+// }
+
+// printFibonacci(6);
+
+function fibonacci(a,b,n,c) {
+    let nn = a+b;
+
+    if (n===c) return nn;
+    return fibonacci(b,nn,n,c+1);
 }
 
-console.log(checkPalindromeRecursion("TAKE U FORWARD"))
+function printFibonacci(n) {
+    if (n===0) return 0;
+    if (n===1) return 1;
+    else {
+        return fibonacci(0,1,n,2)
+    }
+}
+
+console.log(printFibonacci(6))
