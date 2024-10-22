@@ -80,3 +80,74 @@
 //     return nums;
 // }
 // console.log(removeDuplicatesFromSorted([1,1]))
+
+// // https://www.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1
+// function sort012(arr) {
+//     let s=0;
+//     let l=arr.length-1;
+//     let i=0;
+//     let temp;
+//     while(i<=l) {
+//         if(arr[i]===0) {
+//             if(i!==s) {
+//                 temp=arr[i];
+//                 arr[i]=arr[s];
+//                 arr[s]=temp;
+//             }
+//             ++s;
+//             ++i;
+//         }
+//         else if(arr[i]===2) {
+//             if(i!==l) {
+//                 temp=arr[i];
+//                 arr[i]=arr[l];
+//                 arr[l]=temp;
+//             }
+//             --l;
+//         }
+//         else {
+//             ++i;
+//         }
+//     }
+//     return arr;
+// }
+// console.log(sort012([0,1,0,2,1,1,2,0]));
+
+// // https://leetcode.com/problems/rotate-array/description/
+// function rotateArrayBy1(arr) {
+//     let temp=arr[0];
+//     for(let i=1;i<arr.length;++i) {
+//         arr[i-1]=arr[i];
+//     }
+//     arr[arr.length-1]=temp;
+//     return arr;
+// }
+// console.log(rotateArrayBy1([1,2,3,4,5]))
+
+
+// https://leetcode.com/problems/rotate-array/description/
+function reverse(s,l,arr) {
+    while(s<l) {
+        let temp = arr[s];
+        arr[s]=arr[l];
+        arr[l]=temp;
+        ++s;
+        --l;
+    }
+}
+
+function rotateArrayByK(arr,k) {
+    let n = arr.length;
+    k=k%n;
+    console.log(k);
+    if (k===0) return arr;
+
+    n=n-1;
+
+    reverse(n-k+1,n,arr);
+    reverse(0,n-k,arr);
+    reverse(0,n,arr);
+    return arr;
+}
+
+console.log(rotateArrayByK([-1],1));
