@@ -125,29 +125,88 @@
 // console.log(rotateArrayBy1([1,2,3,4,5]))
 
 
-// https://leetcode.com/problems/rotate-array/description/
-function reverse(s,l,arr) {
-    while(s<l) {
-        let temp = arr[s];
-        arr[s]=arr[l];
-        arr[l]=temp;
-        ++s;
-        --l;
-    }
-}
+// // https://leetcode.com/problems/rotate-array/description/
+// function reverse(s,l,arr) {
+//     while(s<l) {
+//         let temp = arr[s];
+//         arr[s]=arr[l];
+//         arr[l]=temp;
+//         ++s;
+//         --l;
+//     }
+// }
+// function rotateArrayByK(arr,k) {
+//     let n = arr.length;
+//     k=k%n;
+//     if (k===0) return arr;
+//     n=n-1;
+//     reverse(n-k+1,n,arr);
+//     reverse(0,n-k,arr);
+//     reverse(0,n,arr);
+//     return arr;
+// }
+// console.log(rotateArrayByK([-1],1));
 
-function rotateArrayByK(arr,k) {
-    let n = arr.length;
-    k=k%n;
-    console.log(k);
-    if (k===0) return arr;
+// // https://takeuforward.org/data-structure/move-all-zeros-to-the-end-of-the-array/
+// function move0sToEnd(arr) {
+//     let i=0;
+//     let j=0;
+//     while(i<arr.length && j<arr.length) {
+//         if(arr[i]===0) {
+//             j=i+1;
+//             while(j<arr.length) {
+//                 if(arr[j]!==0) {
+//                     let temp = arr[i];
+//                     arr[i]=arr[j];
+//                     arr[j]=temp;
+//                     break;
+//                 }
+//                 ++j;
+//             }
+//         }
+//         ++i;
+//     }
+//     return arr;
+// }
+// console.log(move0sToEnd([1 ,0 ,2 ,3 ,0 ,4 ,0 ,1]))
 
-    n=n-1;
+// // https://www.geeksforgeeks.org/problems/who-will-win-1587115621/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=who-will-win
+// function linearsearch(arr, k) {
+//     for(let i=0;i<arr.length;++i) if(arr[i]===k) return true;
+//     return false;
+// }
+// console.log(linearsearch([1, 2, 3, 4, 6], 6))
 
-    reverse(n-k+1,n,arr);
-    reverse(0,n-k,arr);
-    reverse(0,n,arr);
-    return arr;
-}
-
-console.log(rotateArrayByK([-1],1));
+// // https://www.geeksforgeeks.org/problems/union-of-two-sorted-arrays-1587115621/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=union-of-two-sorted-arrays
+// function sortedUnion(arr1, arr2) {
+//     let n=arr1.length;
+//     let m=arr2.length;
+//     let s = new Set();
+//     let i=0;
+//     let j=0;
+//     while(i<n && j<m) {
+//         if(arr1[i] < arr2[j]) {
+//             s.add(arr1[i]);
+//             ++i;
+//         }
+//         else if (arr1[i] > arr2[j]){
+//             s.add(arr2[j]);
+//             ++j;
+//         }
+//         else {
+//             s.add(arr1[i]);
+//             ++i;
+//             ++j;
+//         }
+//     }
+//     while(i<n) {
+//         s.add(arr1[i]);
+//         ++i;
+//     }
+//     while(j<m) {
+//         s.add(arr2[j]);
+//         ++j;
+//     }
+//     return [...s];
+// }
+// console.log(sortedUnion([1,2,3],[2,3,4,4,5]))
