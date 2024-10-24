@@ -210,3 +210,40 @@
 //     return [...s];
 // }
 // console.log(sortedUnion([1,2,3],[2,3,4,4,5]))
+
+// // https://leetcode.com/problems/missing-number/description/
+// function findMissingNumber(arr) {
+//     let totalSum = Math.floor((arr.length*(arr.length+1))/2);
+//     for(let i of arr) {
+//         totalSum -= i;
+//     }
+//     return totalSum;
+// }
+// console.log(findMissingNumber([9,6,4,2,3,5,7,0,1]))
+
+// // https://leetcode.com/problems/max-consecutive-ones/description/
+// function findMaxConsecutiveOnes(arr) {
+//     let m = 0;
+//     let c = 0;
+
+//     for(let i of arr) {
+//         if(i===0) {
+//             if(c>m) m=c;
+//             c=0;
+//         }
+//         else ++c;
+//     }
+//     if(c>m) m=c;
+//     return m;
+// }
+// console.log(findMaxConsecutiveOnes([1, 0, 1, 1, 0, 1]));
+
+// https://leetcode.com/problems/single-number/
+function singleNumber(arr) {
+    let num = 0;
+
+    for(let i of arr) num = num ^ i;
+
+    return num;
+}
+console.log(singleNumber([0,0,0]))
