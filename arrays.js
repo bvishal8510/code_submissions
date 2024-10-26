@@ -238,12 +238,37 @@
 // }
 // console.log(findMaxConsecutiveOnes([1, 0, 1, 1, 0, 1]));
 
-// https://leetcode.com/problems/single-number/
-function singleNumber(arr) {
-    let num = 0;
+// // https://leetcode.com/problems/single-number/
+// function singleNumber(arr) {
+//     let num = 0;
+//     for(let i of arr) num = num ^ i;
+//     return num;
+// }
+// console.log(singleNumber([0,0,0]))
 
-    for(let i of arr) num = num ^ i;
+https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=longest-sub-array-with-sum-k
+// double loops
+// function lenOfLongSubarr(arr,n, k) {
+//     let ml = 0;
+//     let l = 0;
+//     let sum = 0;
+//     for(let i=0;i<n;++i) {
+//         sum = 0;
+//         for(let j=i;j<n;++j) {
+//             sum += arr[j];
+//             ++l;
+//             if(sum === k) {
+//                 if(ml<l) ml=l;
+//                 l=0;
+//                 break;
+//             }
+//             if(sum > k) {
+//                 l=0;
+//                 break;
+//             }
+//         }
+//     }
+//     return ml;
+// }
+// console.log(lenOfLongSubarr([-1, 2, 3],3,6));
 
-    return num;
-}
-console.log(singleNumber([0,0,0]))
