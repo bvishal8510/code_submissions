@@ -272,35 +272,36 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // }
 // console.log(lenOfLongSubarr([-1, 2, 3],3,6));
 
-// optimized
-function lenOfLongSubarr(arr,n, k) {
+// // optimized
+// function lenOfLongSubarr(arr,n, k) {
 
-    let i=-1,j=0;
-    let sum = arr[j];
-    let l = 0;
+//     let i=-1,j=0;
+//     let sum = arr[j];
+//     let l = 0;
 
-    while(j<n) {
-        if(sum === k) {
-            if(l<(j-i)) l=j-i;
-            ++j;
-            sum += arr[j];
-        }
-        if (sum < k) {
-            ++j;
-            sum += arr[j];
-        }
-        else {
-            while(sum > k) {
-                ++i;
-                sum -= arr[i];
-            }
-        }
-    }
-    return l;
-}
-// console.log(lenOfLongSubarr([-1, 2, 3, 1],4,3));
-console.log(lenOfLongSubarr([-13,0,6,15,16,2,15,-12,17,-16,0,-3,19,-3,2,-9,-6],17,15));
+//     while(j<n) {
+//         if(sum === k) {
+//             if(l<(j-i)) l=j-i;
+//             ++j;
+//             sum += arr[j];
+//         }
+//         if (sum < k) {
+//             ++j;
+//             sum += arr[j];
+//         }
+//         else {
+//             while(sum > k) {
+//                 ++i;
+//                 sum -= arr[i];
+//             }
+//         }
+//     }
+//     return l;
+// }
+// // console.log(lenOfLongSubarr([-1, 2, 3, 1],4,3));
+// console.log(lenOfLongSubarr([-13,0,6,15,16,2,15,-12,17,-16,0,-3,19,-3,2,-9,-6],17,15));
 
+// https://leetcode.com/problems/two-sum/
 // function twoSum(arr, t) {
 //     let m = new Map();
 
@@ -312,3 +313,36 @@ console.log(lenOfLongSubarr([-13,0,6,15,16,2,15,-12,17,-16,0,-3,19,-3,2,-9,-6],1
 //     }
 // }
 // console.log(twoSum([2,7,11,15],9))
+
+function majorityElement(arr) {
+    // // brute 1
+    // let sortedArray = arr.sort((a,b)=>a-b);
+    // return sortedArray[Math.floor(arr.length/2)];
+    // // brute 2
+    // let m = new Map();
+    // let max = 0;
+    // let ans = 0;
+    // for(let elem of arr) {
+    //     if(m.has(elem)) m.set(elem, m.get(elem)+1);
+    //     else m.set(elem, 1);
+    //     if(m.get(elem)>max) {
+    //         max=m.get(elem);
+    //         ans=elem;
+    //     }
+    // }
+    // return ans;
+    // Moore’s Voting Algorithm
+    let ans = 0;
+    let c = 0;
+    for(let e of arr) {
+        if(c === 0) {
+            ans = e;
+            ++c;
+        }
+        else if (e === ans) ++c;
+        else --c;
+    }
+    return ans;
+}
+console.log(majorityElement([4,4,2,4,3,4,4,3,2,4]));
+
