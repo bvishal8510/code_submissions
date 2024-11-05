@@ -372,3 +372,31 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 //     return max;
 // }
 // console.log(maxSubArray([2,-1,1,2]));
+
+// // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+// (function maxProfit(arr) {
+//     let max = 0;
+//     let min = arr[0];
+//     for(let i=1;i<arr.length;++i) {
+//         if(arr[i]<min) min=arr[i];
+//         else if((arr[i]-min)>max) max=arr[i]-min;
+//     }
+//     return max;
+// })([7,6])
+
+// https://leetcode.com/problems/rearrange-array-elements-by-sign/description/
+(function rearrangeArray(arr){
+    // //two array
+    // let negarr = [];
+    // let posarr = [];
+    // for(let e of arr) {
+    //     if(e<0) negarr.push(e);
+    //     else posarr.push(e)
+    // }
+    // for(let i=0;i<posarr.length;++i) {
+    //     arr[2*i] = posarr[i];
+    //     arr[2*i+1] = negarr[i];
+    // }
+    // return arr;
+    
+})([-1,1]);
