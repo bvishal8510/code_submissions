@@ -400,3 +400,23 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
     // return arr;
     
 })([-1,1]);
+
+// https://leetcode.com/problems/frequency-of-the-most-frequent-element/
+function maxFrequency(nums, k) {
+    // //brute
+    // let max=0;
+    // nums = nums.sort((a,b)=>a-b);
+    // for(let i=nums.length-1;i>1;--i) {
+    //     let j = i-1;
+    //     let count=0;
+    //     let dk=k;
+    //     while(j>=0 && ((nums[i]-nums[j])<=dk)) {
+    //         dk-=(nums[i]-nums[j]);
+    //         ++count;
+    //         --j;
+    //     }
+    //     if(count > max) max=count
+    // }
+    // return max+1;
+}
+console.log(maxFrequency([1,4,8,13], 5))
