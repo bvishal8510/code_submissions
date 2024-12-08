@@ -401,39 +401,47 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
     
 })([-1,1]);
 
-// https://leetcode.com/problems/frequency-of-the-most-frequent-element/
-function maxFrequency(nums, k) {
-    // //brute
-    // let max=0;
-    // nums = nums.sort((a,b)=>a-b);
-    // for(let i=nums.length-1;i>1;--i) {
-    //     let j = i-1;
-    //     let count=0;
-    //     let dk=k;
-    //     while(j>=0 && ((nums[i]-nums[j])<=dk)) {
-    //         dk-=(nums[i]-nums[j]);
-    //         ++count;
-    //         --j;
-    //     }
-    //     if(count > max) max=count
-    // }
-    // return max+1;
-    
-    //optimized sliding window
-    nums = nums.sort((a,b)=>a-b);
-    let s=0, l=0, total=nums[0],max=0;
+// // https://leetcode.com/problems/frequency-of-the-most-frequent-element/
+// function maxFrequency(nums, k) {
+//     // //brute
+//     // let max=0;
+//     // nums = nums.sort((a,b)=>a-b);
+//     // for(let i=nums.length-1;i>1;--i) {
+//     //     let j = i-1;
+//     //     let count=0;
+//     //     let dk=k;
+//     //     while(j>=0 && ((nums[i]-nums[j])<=dk)) {
+//     //         dk-=(nums[i]-nums[j]);
+//     //         ++count;
+//     //         --j;
+//     //     }
+//     //     if(count > max) max=count
+//     // }
+//     // return max+1;
+//     //optimized sliding window
+//     nums = nums.sort((a,b)=>a-b);
+//     let s=0, l=0, total=nums[0],max=0;
+//     while(l<nums.length && s<=l) {
+//         if((nums[l]*((l-s)+1) - total) <= k) {
+//             if(((l-s)+1)>max) max = (l-s)+1;
+//             ++l;
+//             total +=nums[l];
+//         }
+//         else {
+//             total -= nums[s];
+//             ++s;
+//         }
+//     }
+//     return max;
+// }
+// console.log(maxFrequency([1,2,4], 5))
 
-    while(l<nums.length && s<=l) {
-        if((nums[l]*((l-s)+1) - total) <= k) {
-            if(((l-s)+1)>max) max = (l-s)+1;
-            ++l;
-            total +=nums[l];
-        }
-        else {
-            total -= nums[s];
-            ++s;
-        }
+// https://www.geeksforgeeks.org/problems/max-sum-in-sub-arrays0824/0
+function pairWithMaxSum(arr){
+    let max = 0;
+    for(let i=0;i<arr.length-1;++i) {
+        if((arr[i]+arr[i+1])>max) max=arr[i]+arr[i+1];
     }
     return max;
 }
-console.log(maxFrequency([1,2,4], 5))
+console.log(pairWithMaxSum([5, 4, 3, 1, 6]))
