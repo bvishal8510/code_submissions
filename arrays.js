@@ -418,5 +418,22 @@ function maxFrequency(nums, k) {
     //     if(count > max) max=count
     // }
     // return max+1;
+    
+    //optimized sliding window
+    nums = nums.sort((a,b)=>a-b);
+    let s=0, l=0, total=nums[0],max=0;
+
+    while(l<nums.length && s<=l) {
+        if((nums[l]*((l-s)+1) - total) <= k) {
+            if(((l-s)+1)>max) max = (l-s)+1;
+            ++l;
+            total +=nums[l];
+        }
+        else {
+            total -= nums[s];
+            ++s;
+        }
+    }
+    return max;
 }
-console.log(maxFrequency([1,4,8,13], 5))
+console.log(maxFrequency([1,2,4], 5))
