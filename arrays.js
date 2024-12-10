@@ -446,36 +446,48 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // }
 // console.log(pairWithMaxSum([5, 4, 3, 1, 6]))
 
-// function lenOfLongestSubarr(arr, k) {
-//     let s=0,l=0,max=0,total=arr[0];
-
-//     while(s<=l && l<arr.length) {
-        
-//     }
-// }
-// console.log(lenOfLongestSubarr([10, 5, 2, 7, 1, 9], 15))
-
-function subarrayXor(arr,k) {
-    let count = 0;
-    let pxor = 0;
-    for(let i=0;i<arr.length;++i) {
-        pxor ^= arr[i];
-        if(pxor === k) ++count;
-        arr[i]=pxor;
+// https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
+function lenOfLongestSubarr(arr, k) {
+    let max = 0;
+    for(let i=1;i<arr.length;++i) {
+        arr[i] = arr[i]+arr[i-1];
     }
     let m = new Map();
-    for(let i=arr.length-1;i>=0;--i) {
-        let fxor = arr[i]^k;
-        if(m.has(fxor)) {
-            count += m.get(fxor);
+    m.set(0, -1);
+    for(let i=0;i<arr.length;++i) {
+        if (m.has(arr[i]-k)) {
+            if(max < (i-m.get(arr[i]-k))) max = i-m.get(arr[i]-k)
         }
-        if(!m.has(arr[i])) {
-            m.set(arr[i],1);
-        }
-        else {
-            m.set(arr[i],m.get(arr[i])+1);
+        if(!m.has(arr[i])){
+            m.set(arr[i],i);
         }
     }
-    return count;
+    return max;
 }
-console.log()
+console.log(lenOfLongestSubarr([10, 5, 2, 7, 1, 9], 15))
+
+// // https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1
+// function subarrayXor(arr,k) {
+//     let count = 0;
+//     let pxor = 0;
+//     for(let i=0;i<arr.length;++i) {
+//         pxor ^= arr[i];
+//         if(pxor === k) ++count;
+//         arr[i]=pxor;
+//     }
+//     let m = new Map();
+//     for(let i=arr.length-1;i>=0;--i) {
+//         let fxor = arr[i]^k;
+//         if(m.has(fxor)) {
+//             count += m.get(fxor);
+//         }
+//         if(!m.has(arr[i])) {
+//             m.set(arr[i],1);
+//         }
+//         else {
+//             m.set(arr[i],m.get(arr[i])+1);
+//         }
+//     }
+//     return count;
+// }
+// console.log()
