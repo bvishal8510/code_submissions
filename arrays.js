@@ -446,25 +446,25 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // }
 // console.log(pairWithMaxSum([5, 4, 3, 1, 6]))
 
-// https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
-function lenOfLongestSubarr(arr, k) {
-    let max = 0;
-    for(let i=1;i<arr.length;++i) {
-        arr[i] = arr[i]+arr[i-1];
-    }
-    let m = new Map();
-    m.set(0, -1);
-    for(let i=0;i<arr.length;++i) {
-        if (m.has(arr[i]-k)) {
-            if(max < (i-m.get(arr[i]-k))) max = i-m.get(arr[i]-k)
-        }
-        if(!m.has(arr[i])){
-            m.set(arr[i],i);
-        }
-    }
-    return max;
-}
-console.log(lenOfLongestSubarr([10, 5, 2, 7, 1, 9], 15))
+// // https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
+// function lenOfLongestSubarr(arr, k) {
+//     let max = 0;
+//     for(let i=1;i<arr.length;++i) {
+//         arr[i] = arr[i]+arr[i-1];
+//     }
+//     let m = new Map();
+//     m.set(0, -1);
+//     for(let i=0;i<arr.length;++i) {
+//         if (m.has(arr[i]-k)) {
+//             if(max < (i-m.get(arr[i]-k))) max = i-m.get(arr[i]-k)
+//         }
+//         if(!m.has(arr[i])){
+//             m.set(arr[i],i);
+//         }
+//     }
+//     return max;
+// }
+// console.log(lenOfLongestSubarr([10, 5, 2, 7, 1, 9], 15))
 
 // // https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1
 // function subarrayXor(arr,k) {
@@ -491,3 +491,18 @@ console.log(lenOfLongestSubarr([10, 5, 2, 7, 1, 9], 15))
 //     return count;
 // }
 // console.log()
+
+function leaders(arr) {
+    let max = -1;
+    let result = [];
+    for(let i=arr.length-1;i>=0;--i) {
+        if(arr[i]>=max) {
+            max=arr[i];
+            result = [arr[i],...result];
+            // result = [arr[i]].concat(result);
+            // result.push(arr[i]);
+        }
+    }
+    return result;
+}
+console.log(leaders([30, 10, 10, 5]))
