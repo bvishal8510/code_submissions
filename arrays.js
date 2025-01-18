@@ -492,37 +492,41 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // }
 // console.log()
 
-// https://leetcode.com/problems/rearrange-array-elements-by-sign/description/
-function rearrangeArray() {
-    let result = [];
-    let pp = 0;
-    let np = 1;
+// // https://leetcode.com/problems/rearrange-array-elements-by-sign/description/
+// function rearrangeArray() {
+//     let result = [];
+//     let pp = 0;
+//     let np = 1;
+//     for(let i=0;i<nums.length;++i) {
+//         if(nums[i]>0) {
+//             result[pp] = nums[i];
+//             pp+=2;
+//         }
+//         else {
+//             result[np] = nums[i];
+//             np+=2
+//         }
+//     }
+//     return result;
+// }
 
-    for(let i=0;i<nums.length;++i) {
-        if(nums[i]>0) {
-            result[pp] = nums[i];
-            pp+=2;
-        }
-        else {
-            result[np] = nums[i];
-            np+=2
-        }
-    }
-    return result;
-}
-
-function leaders(arr) {
-    let max = -1;
-    let result = [];
-    for(let i=arr.length-1;i>=0;--i) {
-        if(arr[i]>=max) {
-            max=arr[i];
-            result = [arr[i],...result];
-            // result = [arr[i]].concat(result);
-            // result.push(arr[i]);
-        }
-    }
-    return result;
-}
-console.log(leaders([30, 10, 10, 5]))
+// // https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1
+// function leaders(arr) {
+//     let result = [arr[arr.length-1]];
+//     for(let i=arr.length-2;i>=0;--i) {
+//         if(arr[i]>=result[result.length-1]) {
+//             result.push(arr[i])
+//         }
+//     }
+//     let i=0, j=result.length-1;
+//     while(i<j) {
+//         let temp = result[i];
+//         result[i]=result[j];
+//         result[j]=temp;
+//         ++i;
+//         --j;
+//     }
+//     return result;
+// }
+// console.log(leaders([16, 17, 4, 3, 5, 2]))
 
