@@ -492,6 +492,25 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // }
 // console.log()
 
+// https://leetcode.com/problems/rearrange-array-elements-by-sign/description/
+function rearrangeArray() {
+    let result = [];
+    let pp = 0;
+    let np = 1;
+
+    for(let i=0;i<nums.length;++i) {
+        if(nums[i]>0) {
+            result[pp] = nums[i];
+            pp+=2;
+        }
+        else {
+            result[np] = nums[i];
+            np+=2
+        }
+    }
+    return result;
+}
+
 function leaders(arr) {
     let max = -1;
     let result = [];
@@ -506,3 +525,4 @@ function leaders(arr) {
     return result;
 }
 console.log(leaders([30, 10, 10, 5]))
+
