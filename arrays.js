@@ -530,3 +530,40 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // }
 // console.log(leaders([16, 17, 4, 3, 5, 2]))
 
+// // https://leetcode.com/problems/next-permutation/description/
+// function nextPermutation(nums) {
+//     let i, j, temp;
+//     for(i=nums.length-2;i>=0;--i) {
+//         if (nums[i] < nums[i+1]) break;
+//     }
+//     if(i===-1) {
+//         let s=0,e=nums.length-1;
+//         while(s<e) {
+//             temp = nums[s];
+//             nums[s]=nums[e];
+//             nums[e]=temp;
+//             ++s;
+//             --e;
+//         }
+//     }
+//     else {
+//         for(j=nums.length-1;j>i;--j) {
+//             if (nums[j]>nums[i]) break;
+//         }
+//         temp = nums[j];
+//         nums[j]=nums[i];
+//         nums[i]=temp;
+//         ++i;
+//         j=nums.length-1;
+//         while(i<j) {
+//             temp = nums[i];
+//             nums[i]=nums[j];
+//             nums[j]=temp;
+//             ++i;
+//             --j
+//         }
+//     }
+// }
+// let nums = [3,2,1];
+// nextPermutation(nums);
+// console.log(nums)
