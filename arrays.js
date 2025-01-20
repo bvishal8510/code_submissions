@@ -567,3 +567,28 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // let nums = [3,2,1];
 // nextPermutation(nums);
 // console.log(nums)
+
+// https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1
+function mergeSortedArrayWithNoExtraSpace(a,b) {
+    let pos = 0,ep = 0;
+    let swapped = true;
+    for(let i=0;i<a.length;++i) {
+        if(swapped) {
+            ep = 0;
+            for(let j=1;j<=pos;++j) if(b[j]<b[ep]) ep=j;
+        }
+        if(a[i]>b[ep]) {
+            let temp = a[i];
+            a[i]=b[ep];
+            b[ep]=temp;
+            swapped = true;
+            if(ep===pos) ++pos;
+        }
+        else swapped=false;
+    }
+    b.sort((x,y)=>x-y);
+}
+let a = [2, 4, 7, 10];
+let b = [2, 3];
+mergeSortedArrayWithNoExtraSpace(a,b)
+console.log(a,b)
