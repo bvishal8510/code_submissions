@@ -593,32 +593,58 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // mergeSortedArrayWithNoExtraSpace(a,b)
 // console.log(a,b)
 
-// https://leetcode.com/problems/longest-consecutive-sequence/description/
-var longestConsecutive = function(nums) {
-    let m = new Map();
-    let max = 0;
-    for(let i=0;i<nums.length;++i) {
-        m.set(nums[i],-1);
-    }
-    for(let i=0;i<nums.length;++i) {
-        if(m.get(nums[i]) === -1) {
-            let count = 1;
-            let num = nums[i]-1;
-            while(m.has(num)) {
-                if(m.get(num) === -1) {
-                    ++count;
-                    m.set(num, count);
-                    --num;
-                }
-                else {
-                    count += m.get(num);
-                    break;
+// // https://leetcode.com/problems/longest-consecutive-sequence/description/
+// var longestConsecutive = function(nums) {
+//     let m = new Map();
+//     let max = 0;
+//     for(let i=0;i<nums.length;++i) {
+//         m.set(nums[i],-1);
+//     }
+//     for(let i=0;i<nums.length;++i) {
+//         if(m.get(nums[i]) === -1) {
+//             let count = 1;
+//             let num = nums[i]-1;
+//             while(m.has(num)) {
+//                 if(m.get(num) === -1) {
+//                     ++count;
+//                     m.set(num, count);
+//                     --num;
+//                 }
+//                 else {
+//                     count += m.get(num);
+//                     break;
+//                 }
+//             }
+//             m.set(nums[i],count);
+//             if(count > max) max=count;
+//         }
+//     }
+//     return max;
+// };
+// console.log(longestConsecutive([100,4,200,1,3,2]))
+
+// https://leetcode.com/problems/set-matrix-zeroes/description/
+var setZeroes = function(m) {
+    let row = m.length;
+    let col = m[0].length;
+    let greater = (row>col)? row: col;
+    for(let i=0;i<row;++i) {
+        for(let j=0;j<col;++j) {
+            if(m[i][j]=== 0) {
+                for(let k=0;k<greater;++k) {
+                    if (m[k] && m[k][j] && m[k][j]!== 0) m[k][j] = 'a';
+                    if(m[i] && m[i][k] && m[i][k] !== 0) m[i][k] = 'a'
                 }
             }
-            m.set(nums[i],count);
-            if(count > max) max=count;
         }
     }
-    return max;
+    for(let i=0;i<row;++i) {
+        for(let j=0;j<col;++j) {
+            if(m[i][j] === 'a') {
+                m[i][j] = 0;
+            }
+        }
+    }
+    return m;
 };
-console.log(longestConsecutive([100,4,200,1,3,2]))
+console.log(setZeroes([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))
