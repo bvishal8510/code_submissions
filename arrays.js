@@ -568,27 +568,57 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // nextPermutation(nums);
 // console.log(nums)
 
-// https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1
-function mergeSortedArrayWithNoExtraSpace(a,b) {
-    let pos = 0,ep = 0;
-    let swapped = true;
-    for(let i=0;i<a.length;++i) {
-        if(swapped) {
-            ep = 0;
-            for(let j=1;j<=pos;++j) if(b[j]<b[ep]) ep=j;
-        }
-        if(a[i]>b[ep]) {
-            let temp = a[i];
-            a[i]=b[ep];
-            b[ep]=temp;
-            swapped = true;
-            if(ep===pos) ++pos;
-        }
-        else swapped=false;
+// // https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1
+// function mergeSortedArrayWithNoExtraSpace(a,b) {
+//     let pos = 0,ep = 0;
+//     let swapped = true;
+//     for(let i=0;i<a.length;++i) {
+//         if(swapped) {
+//             ep = 0;
+//             for(let j=1;j<=pos;++j) if(b[j]<b[ep]) ep=j;
+//         }
+//         if(a[i]>b[ep]) {
+//             let temp = a[i];
+//             a[i]=b[ep];
+//             b[ep]=temp;
+//             swapped = true;
+//             if(ep===pos) ++pos;
+//         }
+//         else swapped=false;
+//     }
+//     b.sort((x,y)=>x-y);
+// }
+// let a = [2, 4, 7, 10];
+// let b = [2, 3];
+// mergeSortedArrayWithNoExtraSpace(a,b)
+// console.log(a,b)
+
+// https://leetcode.com/problems/longest-consecutive-sequence/description/
+var longestConsecutive = function(nums) {
+    let m = new Map();
+    let max = 0;
+    for(let i=0;i<nums.length;++i) {
+        m.set(nums[i],-1);
     }
-    b.sort((x,y)=>x-y);
-}
-let a = [2, 4, 7, 10];
-let b = [2, 3];
-mergeSortedArrayWithNoExtraSpace(a,b)
-console.log(a,b)
+    for(let i=0;i<nums.length;++i) {
+        if(m.get(nums[i]) === -1) {
+            let count = 1;
+            let num = nums[i]-1;
+            while(m.has(num)) {
+                if(m.get(num) === -1) {
+                    ++count;
+                    m.set(num, count);
+                    --num;
+                }
+                else {
+                    count += m.get(num);
+                    break;
+                }
+            }
+            m.set(nums[i],count);
+            if(count > max) max=count;
+        }
+    }
+    return max;
+};
+console.log(longestConsecutive([100,4,200,1,3,2]))
