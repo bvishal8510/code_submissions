@@ -623,28 +623,54 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // };
 // console.log(longestConsecutive([100,4,200,1,3,2]))
 
-// https://leetcode.com/problems/set-matrix-zeroes/description/
-var setZeroes = function(m) {
-    let row = m.length;
-    let col = m[0].length;
-    let greater = (row>col)? row: col;
-    for(let i=0;i<row;++i) {
-        for(let j=0;j<col;++j) {
-            if(m[i][j]=== 0) {
-                for(let k=0;k<greater;++k) {
-                    if (m[k] && m[k][j] && m[k][j]!== 0) m[k][j] = 'a';
-                    if(m[i] && m[i][k] && m[i][k] !== 0) m[i][k] = 'a'
-                }
-            }
+// // https://leetcode.com/problems/set-matrix-zeroes/description/
+// var setZeroes = function(m) {
+//     let row = m.length;
+//     let col = m[0].length;
+//     let greater = (row>col)? row: col;
+//     for(let i=0;i<row;++i) {
+//         for(let j=0;j<col;++j) {
+//             if(m[i][j]=== 0) {
+//                 for(let k=0;k<greater;++k) {
+//                     if (m[k] && m[k][j] && m[k][j]!== 0) m[k][j] = 'a';
+//                     if(m[i] && m[i][k] && m[i][k] !== 0) m[i][k] = 'a'
+//                 }
+//             }
+//         }
+//     }
+//     for(let i=0;i<row;++i) {
+//         for(let j=0;j<col;++j) {
+//             if(m[i][j] === 'a') {
+//                 m[i][j] = 0;
+//             }
+//         }
+//     }
+//     return m;
+// };
+// console.log(setZeroes([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))
+
+// https://leetcode.com/problems/rotate-image/description/
+var rotate = function(m) {
+    let rows = m.length-1;
+    let s,e,temp;
+    for(let i=0;i<=rows;++i) {
+        s=0;
+        e=rows;
+        while(s<e) {
+            temp = m[i][s];
+            m[i][s]=m[i][e];
+            m[i][e]=temp;
+            ++s;
+            --e;
         }
     }
-    for(let i=0;i<row;++i) {
-        for(let j=0;j<col;++j) {
-            if(m[i][j] === 'a') {
-                m[i][j] = 0;
-            }
+    for(let i=0;i<=rows;++i) {
+        for(let j=0;j<(rows-i);++j) {
+            temp = m[i][j];
+            m[i][j] = m[rows-j][rows-i];
+            m[rows-j][rows-i]=temp;
         }
     }
     return m;
 };
-console.log(setZeroes([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))
+console.log(rotate([[1,2,3],[4,5,6],[7,8,9]]))
