@@ -705,21 +705,42 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // };
 // console.log(spiralOrder([[1,2,3],[4,5,6],[7,8,9]]))
 
-// https://leetcode.com/problems/subarray-sum-equals-k/description/
-var subarraySum = function(nums, k) {
-    let presummap = {0:1};
-    let count = 0;
-    let cs = 0;
-    for(let i=0;i<nums.length;++i) {
-        cs += nums[i];
-        count += ((presummap[cs-k]))? presummap[cs-k] : 0;
-        if(presummap[cs]) {
-            presummap[cs] += 1
-        }
-        else {
-            presummap[cs] = 1;
+// // https://leetcode.com/problems/subarray-sum-equals-k/description/
+// var subarraySum = function(nums, k) {
+//     let presummap = {0:1};
+//     let count = 0;
+//     let cs = 0;
+//     for(let i=0;i<nums.length;++i) {
+//         cs += nums[i];
+//         count += ((presummap[cs-k]))? presummap[cs-k] : 0;
+//         if(presummap[cs]) {
+//             presummap[cs] += 1
+//         }
+//         else {
+//             presummap[cs] = 1;
+//         }
+//     }
+//     return count;
+// };
+// console.log(subarraySum([1,1,1],2))
+
+// https://leetcode.com/problems/pascals-triangle/description/
+var pascalsTriangle = function(num) {
+    let result = [[1]];
+    for(let i=1;i<num;++i) {
+        result[i]=[];
+        for(let j=0;j<=result[i-1].length;++j) {
+            if(j===0) {
+                result[i].push(result[i-1][j]);
+            }
+            else if (j === (result[i-1].length)) {
+                result[i].push(result[i-1][j-1]);
+            }
+            else {
+                result[i].push(result[i-1][j-1]+result[i-1][j]);
+            }
         }
     }
-    return count;
+    return result;
 };
-console.log(subarraySum([1,1,1],2))
+console.log(pascalsTriangle(5))
