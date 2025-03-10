@@ -649,28 +649,57 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // };
 // console.log(setZeroes([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))
 
-// https://leetcode.com/problems/rotate-image/description/
-var rotate = function(m) {
-    let rows = m.length-1;
-    let s,e,temp;
-    for(let i=0;i<=rows;++i) {
-        s=0;
-        e=rows;
-        while(s<e) {
-            temp = m[i][s];
-            m[i][s]=m[i][e];
-            m[i][e]=temp;
-            ++s;
-            --e;
+// // https://leetcode.com/problems/rotate-image/description/
+// var rotate = function(m) {
+//     let rows = m.length-1;
+//     let s,e,temp;
+//     for(let i=0;i<=rows;++i) {
+//         s=0;
+//         e=rows;
+//         while(s<e) {
+//             temp = m[i][s];
+//             m[i][s]=m[i][e];
+//             m[i][e]=temp;
+//             ++s;
+//             --e;
+//         }
+//     }
+//     for(let i=0;i<=rows;++i) {
+//         for(let j=0;j<(rows-i);++j) {
+//             temp = m[i][j];
+//             m[i][j] = m[rows-j][rows-i];
+//             m[rows-j][rows-i]=temp;
+//         }
+//     }
+//     return m;
+// };
+// console.log(rotate([[1,2,3],[4,5,6],[7,8,9]]))
+
+// https://leetcode.com/problems/spiral-matrix/description/
+var spiralOrder = function(matrix) {
+    let result = [];
+    let top = 0, left = 0,bottom = matrix.length-1,right = matrix[0].length-1;
+    while((bottom >= top) && (right >= left)) {
+        for(let i=left; i<=right;++i) {
+            result.push(matrix[top][i]);
+        }
+        ++top;
+        for(let i=top;i<=bottom;++i) {
+            result.push(matrix[i][right]);
+        }
+        --right;
+        if(bottom >= top) {
+            for(let i=right;i>=left;--i) {
+                result.push(matrix[bottom][i]);
+            }
+            --bottom;
+        }
+        if(right >= left) {
+            for(let i=bottom; i>=top;--i) {
+                result.push(matrix[i][left]);
+            }
+            ++left;
         }
     }
-    for(let i=0;i<=rows;++i) {
-        for(let j=0;j<(rows-i);++j) {
-            temp = m[i][j];
-            m[i][j] = m[rows-j][rows-i];
-            m[rows-j][rows-i]=temp;
-        }
-    }
-    return m;
+    return result;
 };
-console.log(rotate([[1,2,3],[4,5,6],[7,8,9]]))
