@@ -724,23 +724,81 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // };
 // console.log(subarraySum([1,1,1],2))
 
-// https://leetcode.com/problems/pascals-triangle/description/
-var pascalsTriangle = function(num) {
-    let result = [[1]];
-    for(let i=1;i<num;++i) {
-        result[i]=[];
-        for(let j=0;j<=result[i-1].length;++j) {
-            if(j===0) {
-                result[i].push(result[i-1][j]);
-            }
-            else if (j === (result[i-1].length)) {
-                result[i].push(result[i-1][j-1]);
-            }
-            else {
-                result[i].push(result[i-1][j-1]+result[i-1][j]);
-            }
+// // https://leetcode.com/problems/pascals-triangle/description/
+// var pascalsTriangle = function(num) {
+//     let result = [[1]];
+//     for(let i=1;i<num;++i) {
+//         result[i]=[];
+//         for(let j=0;j<=result[i-1].length;++j) {
+//             if(j===0) {
+//                 result[i].push(result[i-1][j]);
+//             }
+//             else if (j === (result[i-1].length)) {
+//                 result[i].push(result[i-1][j-1]);
+//             }
+//             else {
+//                 result[i].push(result[i-1][j-1]+result[i-1][j]);
+//             }
+//         }
+//     }
+//     return result;
+// };
+// console.log(pascalsTriangle(5))
+
+// // https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
+// function findTwoElement(arr) {
+//     let cs = 0, l=arr.length;
+//     let re,ns,me;
+//     ns = Math.floor((l*(l+1))/2);
+
+//     for(let i=0;i<l;++i) {
+//         let elem = Math.abs(arr[i]);
+//         if(arr[elem-1]<0) re=elem;
+//         else {
+//             cs += elem;
+//             arr[elem-1] = -1*arr[elem-1]; 
+//         }
+//     }
+//     me = Math.abs(cs-ns);
+
+//     return [re, me];
+// }
+// console.log(findTwoElement([4, 3, 6, 2, 1, 1]))
+
+https://leetcode.com/problems/majority-element-ii/description/
+function majorityElement2(nums) {
+    let el1,el2;
+    let cnt1=0,cnt2=0;
+    let result = [];
+    for(let i=0;i<nums.length;++i) {
+        if((cnt1 === 0) && (nums[i]!==el2)) {
+            ++cnt1;
+            el1 = nums[i];
+        }
+        else if((cnt2 === 0) && (nums[i]!==el1)) {
+            ++cnt2;
+            el2 = nums[i];
+        }
+        else if (nums[i]===el1) {
+            ++cnt1;
+        }
+        else if(nums[i]===el2) {
+            ++cnt2;
+        }
+        else {
+            --cnt2;
+            --cnt1;
         }
     }
+    cnt1=0;
+    cnt2=0;
+    for(let i=0;i<nums.length;++i) {
+        if(nums[i]===el1) ++cnt1;
+        if(nums[i]===el2) ++cnt2;
+    }
+    let mc = Math.floor(nums.length/3);
+    if(cnt1>mc) result.push(el1)
+    if(cnt2>mc) result.push(el2)
     return result;
-};
-console.log(pascalsTriangle(5))
+}
+console.log(majorityElement2([1,2]))
