@@ -803,22 +803,46 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 
 // https://leetcode.com/problems/3sum/
 function threesum(nums) {
+    // nums = nums.sort((a,b)=>a-b);
+    // let result = new Set();
+    // let tempset = new Set();
+    // let fresult = [];
+    // for(let i=0;i<nums.length-2;++i) {
+    //     tempset.clear();
+    //     for(let j=i+1;j<nums.length;++j) {
+    //         if (tempset.has(-1*(nums[i]+nums[j])) && !result.has(JSON.stringify([nums[i],-1*(nums[i]+nums[j]),nums[j]]))) {
+    //             result.add(JSON.stringify([nums[i],-1*(nums[i]+nums[j]),nums[j]]));
+    //             fresult.push([nums[i],(-1*(nums[i]+nums[j])),nums[j]])
+    //         }
+    //         else {
+    //             tempset.add(nums[j]);
+    //         }
+    //     }
+    // }
+    // return fresult;
     nums = nums.sort((a,b)=>a-b);
-    let result = new Set();
-    let tempset = new Set();
-    let fresult = [];
+    let result = [];
+    let previ,l,r;
     for(let i=0;i<nums.length-2;++i) {
-        tempset.clear();
-        for(let j=i+1;j<nums.length;++j) {
-            if (tempset.has(-1*(nums[i]+nums[j])) && !result.has(JSON.stringify([nums[i],-1*(nums[i]+nums[j]),nums[j]]))) {
-                result.add(JSON.stringify([nums[i],-1*(nums[i]+nums[j]),nums[j]]));
-                fresult.push([nums[i],(-1*(nums[i]+nums[j])),nums[j]])
+        if(nums[i]!==previ) {
+            l = i+1;
+            r = nums.length-1;
+            while(l<r) {
+                if(nums[i]+nums[l]+nums[r] === 0) {
+                    result.push([nums[i],nums[l],nums[r]]);
+                    ++l;
+                    --r;
+                    while(l<r && nums[l] === nums[l-1]) ++l;
+                    while(l<r && nums[r] === nums[r+1]) --r;
+                }
+                else if (nums[i]+nums[l]+nums[r] > 0) {
+                    --r;
+                }
+                else ++l;
             }
-            else {
-                tempset.add(nums[j]);
-            }
+            previ = nums[i];
         }
     }
-    return fresult;
+    return result;
 }
 console.log(threesum([2,-3,0,-2,-5,-5,-4,1,2,-2,2,0,2,-4,5,5,-10]))
