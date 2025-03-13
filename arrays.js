@@ -801,48 +801,83 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // }
 // console.log(majorityElement2([1,2]))
 
-// https://leetcode.com/problems/3sum/
-function threesum(nums) {
-    // nums = nums.sort((a,b)=>a-b);
-    // let result = new Set();
-    // let tempset = new Set();
-    // let fresult = [];
-    // for(let i=0;i<nums.length-2;++i) {
-    //     tempset.clear();
-    //     for(let j=i+1;j<nums.length;++j) {
-    //         if (tempset.has(-1*(nums[i]+nums[j])) && !result.has(JSON.stringify([nums[i],-1*(nums[i]+nums[j]),nums[j]]))) {
-    //             result.add(JSON.stringify([nums[i],-1*(nums[i]+nums[j]),nums[j]]));
-    //             fresult.push([nums[i],(-1*(nums[i]+nums[j])),nums[j]])
-    //         }
-    //         else {
-    //             tempset.add(nums[j]);
-    //         }
-    //     }
-    // }
-    // return fresult;
+// // https://leetcode.com/problems/3sum/
+// function threesum(nums) {
+//     // nums = nums.sort((a,b)=>a-b);
+//     // let result = new Set();
+//     // let tempset = new Set();
+//     // let fresult = [];
+//     // for(let i=0;i<nums.length-2;++i) {
+//     //     tempset.clear();
+//     //     for(let j=i+1;j<nums.length;++j) {
+//     //         if (tempset.has(-1*(nums[i]+nums[j])) && !result.has(JSON.stringify([nums[i],-1*(nums[i]+nums[j]),nums[j]]))) {
+//     //             result.add(JSON.stringify([nums[i],-1*(nums[i]+nums[j]),nums[j]]));
+//     //             fresult.push([nums[i],(-1*(nums[i]+nums[j])),nums[j]])
+//     //         }
+//     //         else {
+//     //             tempset.add(nums[j]);
+//     //         }
+//     //     }
+//     // }
+//     // return fresult;
+//     nums = nums.sort((a,b)=>a-b);
+//     let result = [];
+//     let previ,l,r;
+//     for(let i=0;i<nums.length-2;++i) {
+//         if(nums[i]!==previ) {
+//             l = i+1;
+//             r = nums.length-1;
+//             while(l<r) {
+//                 if(nums[i]+nums[l]+nums[r] === 0) {
+//                     result.push([nums[i],nums[l],nums[r]]);
+//                     ++l;
+//                     --r;
+//                     while(l<r && nums[l] === nums[l-1]) ++l;
+//                     while(l<r && nums[r] === nums[r+1]) --r;
+//                 }
+//                 else if (nums[i]+nums[l]+nums[r] > 0) {
+//                     --r;
+//                 }
+//                 else ++l;
+//             }
+//             previ = nums[i];
+//         }
+//     }
+//     return result;
+// }
+// console.log(threesum([2,-3,0,-2,-5,-5,-4,1,2,-2,2,0,2,-4,5,5,-10]))
+
+// https://leetcode.com/problems/4sum/
+function foursum(nums, k) {
     nums = nums.sort((a,b)=>a-b);
     let result = [];
-    let previ,l,r;
-    for(let i=0;i<nums.length-2;++i) {
+    let previ, prevj, l, r;
+    for(let i=0;i<nums.length;++i) {
         if(nums[i]!==previ) {
-            l = i+1;
-            r = nums.length-1;
-            while(l<r) {
-                if(nums[i]+nums[l]+nums[r] === 0) {
-                    result.push([nums[i],nums[l],nums[r]]);
-                    ++l;
-                    --r;
-                    while(l<r && nums[l] === nums[l-1]) ++l;
-                    while(l<r && nums[r] === nums[r+1]) --r;
+            prevj=undefined;
+            for(let j=i+1;j<nums.length;++j) {
+                if(nums[j]!==prevj) {
+                    l = j+1;
+                    r = nums.length-1;
+                    while(l<r) {
+                        if(nums[i]+nums[l]+nums[r]+nums[j] === k) {
+                            result.push([nums[i],nums[l],nums[r],nums[j]]);
+                            ++l;
+                            --r;
+                            while(l<r && nums[l] === nums[l-1]) ++l;
+                            while(l<r && nums[r] === nums[r+1]) --r;
+                        }
+                        else if (nums[i]+nums[l]+nums[r]+nums[j] > k) {
+                            --r;
+                        }
+                        else ++l;
+                    }
+                    prevj = nums[j];
                 }
-                else if (nums[i]+nums[l]+nums[r] > 0) {
-                    --r;
-                }
-                else ++l;
             }
             previ = nums[i];
         }
     }
     return result;
 }
-console.log(threesum([2,-3,0,-2,-5,-5,-4,1,2,-2,2,0,2,-4,5,5,-10]))
+console.log(foursum([-7,-5,0,7,1,1,-10,-2,7,7,-2,-6,0,-10,-5,7,-8,5],28))
