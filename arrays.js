@@ -847,37 +847,56 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // }
 // console.log(threesum([2,-3,0,-2,-5,-5,-4,1,2,-2,2,0,2,-4,5,5,-10]))
 
-// https://leetcode.com/problems/4sum/
-function foursum(nums, k) {
-    nums = nums.sort((a,b)=>a-b);
-    let result = [];
-    let previ, prevj, l, r;
-    for(let i=0;i<nums.length;++i) {
-        if(nums[i]!==previ) {
-            prevj=undefined;
-            for(let j=i+1;j<nums.length;++j) {
-                if(nums[j]!==prevj) {
-                    l = j+1;
-                    r = nums.length-1;
-                    while(l<r) {
-                        if(nums[i]+nums[l]+nums[r]+nums[j] === k) {
-                            result.push([nums[i],nums[l],nums[r],nums[j]]);
-                            ++l;
-                            --r;
-                            while(l<r && nums[l] === nums[l-1]) ++l;
-                            while(l<r && nums[r] === nums[r+1]) --r;
-                        }
-                        else if (nums[i]+nums[l]+nums[r]+nums[j] > k) {
-                            --r;
-                        }
-                        else ++l;
-                    }
-                    prevj = nums[j];
-                }
-            }
-            previ = nums[i];
+// // https://leetcode.com/problems/4sum/
+// function foursum(nums, k) {
+//     nums = nums.sort((a,b)=>a-b);
+//     let result = [];
+//     let previ, prevj, l, r;
+//     for(let i=0;i<nums.length;++i) {
+//         if(nums[i]!==previ) {
+//             prevj=undefined;
+//             for(let j=i+1;j<nums.length;++j) {
+//                 if(nums[j]!==prevj) {
+//                     l = j+1;
+//                     r = nums.length-1;
+//                     while(l<r) {
+//                         if(nums[i]+nums[l]+nums[r]+nums[j] === k) {
+//                             result.push([nums[i],nums[l],nums[r],nums[j]]);
+//                             ++l;
+//                             --r;
+//                             while(l<r && nums[l] === nums[l-1]) ++l;
+//                             while(l<r && nums[r] === nums[r+1]) --r;
+//                         }
+//                         else if (nums[i]+nums[l]+nums[r]+nums[j] > k) {
+//                             --r;
+//                         }
+//                         else ++l;
+//                     }
+//                     prevj = nums[j];
+//                 }
+//             }
+//             previ = nums[i];
+//         }
+//     }
+//     return result;
+// }
+// console.log(foursum([-7,-5,0,7,1,1,-10,-2,7,7,-2,-6,0,-10,-5,7,-8,5],28))
+
+// https://www.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1
+function largestSubarrayWith0Sum(arr) {
+    let maxlen = 0;
+    let m = new Map();
+    m.set(0,-1);
+    let sum = 0;
+    for(let i=0;i<arr.length;++i) {
+        sum += arr[i];
+        if(m.has(sum)) {
+            maxlen = (maxlen > (i-m.get(sum)))?maxlen:(i-m.get(sum));
+        }
+        else {
+            m.set(sum,i)
         }
     }
-    return result;
+    return maxlen;
 }
-console.log(foursum([-7,-5,0,7,1,1,-10,-2,7,7,-2,-6,0,-10,-5,7,-8,5],28))
+console.log(largestSubarrayWith0Sum([1, 3, -5, 6, -2]))
