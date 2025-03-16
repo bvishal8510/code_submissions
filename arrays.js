@@ -882,21 +882,40 @@ https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_so
 // }
 // console.log(foursum([-7,-5,0,7,1,1,-10,-2,7,7,-2,-6,0,-10,-5,7,-8,5],28))
 
-// https://www.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1
-function largestSubarrayWith0Sum(arr) {
-    let maxlen = 0;
-    let m = new Map();
-    m.set(0,-1);
-    let sum = 0;
+// // https://www.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1
+// function largestSubarrayWith0Sum(arr) {
+//     let maxlen = 0;
+//     let m = new Map();
+//     m.set(0,-1);
+//     let sum = 0;
+//     for(let i=0;i<arr.length;++i) {
+//         sum += arr[i];
+//         if(m.has(sum)) {
+//             maxlen = (maxlen > (i-m.get(sum)))?maxlen:(i-m.get(sum));
+//         }
+//         else {
+//             m.set(sum,i)
+//         }
+//     }
+//     return maxlen;
+// }
+// console.log(largestSubarrayWith0Sum([1, 3, -5, 6, -2]))
+
+// https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1
+function subarraysWithXorK(arr,k) {
+    let m = {};
+    let xor = 0;
+    let count = 0;
+
     for(let i=0;i<arr.length;++i) {
-        sum += arr[i];
-        if(m.has(sum)) {
-            maxlen = (maxlen > (i-m.get(sum)))?maxlen:(i-m.get(sum));
-        }
-        else {
-            m.set(sum,i)
-        }
+        xor ^=arr[i];
+        if(xor === k) count+=1;
+
+        if(m[xor^k]) count+=m[xor^k];
+
+        if(m[xor]) m[xor]+=1;
+        else m[xor]=1;
     }
-    return maxlen;
+    return count;
 }
-console.log(largestSubarrayWith0Sum([1, 3, -5, 6, -2]))
+console.log(subarraysWithXorK([1, 1, 1, 1],0))
